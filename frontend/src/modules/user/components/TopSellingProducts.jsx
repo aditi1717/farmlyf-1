@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from './ProductCard';
+import LoadingSpinner from './LoadingSpinner';
 import { useFeaturedSectionByName } from '../../../hooks/useContent';
 
 const TopSellingProducts = () => {
@@ -26,18 +27,8 @@ const TopSellingProducts = () => {
                         <div className="skeleton shimmer w-40 md:w-72 h-1.5 rounded-full mx-auto" />
                     </div>
 
-                    <div className="flex gap-4 md:gap-6 overflow-hidden px-1">
-                        {Array.from({ length: 4 }).map((_, i) => (
-                            <div
-                                key={i}
-                                className="min-w-[160px] w-[170px] md:min-w-[280px] md:w-[280px] rounded-2xl border border-gray-100 bg-white p-3 md:p-4"
-                            >
-                                <div className="skeleton shimmer aspect-[16/11] rounded-xl mb-3 md:mb-4" />
-                                <div className="skeleton shimmer h-3 md:h-4 w-3/4 rounded mb-2" />
-                                <div className="skeleton shimmer h-3 md:h-4 w-2/4 rounded mb-3 md:mb-4" />
-                                <div className="skeleton shimmer h-7 md:h-9 w-full rounded-lg" />
-                            </div>
-                        ))}
+                    <div className="py-8 md:py-14">
+                        <LoadingSpinner label="Loading bestsellers..." />
                     </div>
                 </div>
             </section>

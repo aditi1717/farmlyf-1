@@ -1,8 +1,12 @@
 import React from 'react';
+import LoadingSpinner from './LoadingSpinner';
 
 const HomePageSkeleton = () => {
     return (
         <div className="bg-white min-h-screen">
+            <div className="px-4 pt-6">
+                <LoadingSpinner className="mb-4" label="Loading homepage products..." />
+            </div>
             <div className="px-3 md:px-12 py-4 md:py-6">
                 <div className="max-w-[1400px] mx-auto rounded-3xl overflow-hidden border border-slate-100">
                     <div className="skeleton shimmer aspect-[16/9] md:aspect-[21/6] w-full" />

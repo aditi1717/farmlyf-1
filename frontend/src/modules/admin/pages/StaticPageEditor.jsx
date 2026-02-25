@@ -3,10 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Save, RotateCcw, Globe, Eye, ImageIcon, Type, Upload } from 'lucide-react';
 import ReactQuill, { Quill } from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
-import ImageResize from 'quill-image-resize-module-react';
+import BlotFormatter from 'quill-blot-formatter';
 import toast from 'react-hot-toast';
 
-Quill.register('modules/imageResize', ImageResize);
+if (typeof window !== 'undefined' && Quill) {
+    Quill.register('modules/blotFormatter', BlotFormatter);
+}
 
 import { useWebsiteContent, useUpdateWebsiteContent } from '../../../hooks/useContent';
 import { useUploadImage } from '../../../hooks/useProducts';
@@ -94,10 +96,7 @@ const StaticPageEditor = () => {
             [{ 'align': [] }],
             ['link', 'image', 'clean']
         ],
-        imageResize: {
-            parchment: Quill.import('parchment'),
-            modules: ['Resize', 'DisplaySize']
-        }
+        blotFormatter: {}
     };
 
     if (loading || !pageConfig) return <div>Loading...</div>;
